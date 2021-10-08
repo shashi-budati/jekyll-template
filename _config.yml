@@ -5,8 +5,6 @@ description: >-
 baseurl: "/jekyll-template1"
 url: "https://shashi-budati.github.io/"
 
-twitter_username: jekyllrb
-github_username:  jekyll
 
 theme: minima
 plugins:
