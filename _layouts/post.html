@@ -10,6 +10,15 @@ layout: default
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         {{ page.date | date: date_format }}
       </time>
+
+      {%- if "zh" != page.lang -%}
+        <!--number_of_word for cjk requires jekyll v4.1.0-->
+        {%- assign word_count = content | number_of_words -%}
+        {%- if word_count > 180 -%}
+          | ~ {{ word_count | divided_by: 150 }} minutes read&nbsp;
+        {%- endif -%}
+      {%- endif -%}
+
       {%- if page.author -%}
       • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card"
           itemprop="name">{{ page.author }}</span></span>
@@ -18,7 +27,7 @@ layout: default
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+    {{ content | replace: '<a href="http', '<a rel=" nofollow" target="_blank" href="http' }}
   </div>
 
   {%- if site.disqus.shortname -%}
