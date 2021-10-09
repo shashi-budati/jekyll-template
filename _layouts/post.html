@@ -19,6 +19,11 @@ layout: default
         {%- endif -%}
       {%- endif -%}
 
+      {%- if page.tags -%} |
+        {%- for tag in page.tags -%}
+          <a class="post-tag" href="{{ site.baseurl }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
+        {%- endfor -%}
+      {%- endif -%}
       {%- if page.author -%}
       • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}
