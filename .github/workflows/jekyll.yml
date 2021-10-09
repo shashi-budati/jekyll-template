@@ -16,11 +16,11 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
-    - name: Validate site with htmlproofer
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "htmlproofer --assume-extension /srv/jekyll/_site"
+    # - name: Validate site with htmlproofer
+    #   run: |
+    #     docker run \
+    #     -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+    #     jekyll/builder:latest /bin/bash -c "htmlproofer --assume-extension /srv/jekyll/_site"
     - name: Push the site to the gh-pages branch
       run: |
         sudo chown $( whoami ):$( whoami ) ${{ github.workspace }}/_site
