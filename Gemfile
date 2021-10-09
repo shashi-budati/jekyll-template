@@ -16,3 +16,4 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "wdm", "~> 0.1.1"
 end
 
+gem "sass", "~> 3.7.4"
